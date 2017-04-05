@@ -73,7 +73,7 @@ describe InfoRequest do
 
     it "strips line breaks from the title" do
       info_request = FactoryGirl.create(:info_request,
-                                       :title => "Title\rwith\nline\r\nbreaks")
+                                       :title => "Title\r with\nline\r\nbreaks")
       info_request.save
       expect(info_request.title).to eq("Title with line breaks")
     end
