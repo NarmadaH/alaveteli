@@ -71,6 +71,13 @@ describe InfoRequest do
       expect(info_request.url_title).to eq("test_title_3")
     end
 
+    it "strips line breaks from the title" do
+      info_request = FactoryGirl.create(:info_request,
+                                       :title => "Title\rwith\nline\r\nbreaks")
+      info_request.save
+      expect(info_request.title).to eq("Title with line breaks")
+    end
+
     context "when a race condition creates a duplicate between new and save" do
       # this appears to be happening in the request#new controller method
       # we suspect (hope?) it's an accidental double press of 'Save'
