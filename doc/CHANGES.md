@@ -28,6 +28,7 @@
   accounts (Liz Conlan)
 * Prevent the `/request/search_ahead` page from raising an error if there are
   no query parameters (Liz Conlan)
+* Prevent new request titles from containing linebreaks (Liz Conlan)
 
 ## Upgrade Notes
 
@@ -40,6 +41,8 @@
   `bundle exec rake db:seed` and then
   `bundle exec rake temp:migrate_admins_and_pros_to_roles` after deployment.
 * There are some database structure updates so remember to `rake db:migrate`
+* Run `bundle exec rake temp:remove_linebreaks_from_request_titles` after 
+  deployment to remove stray linebreaks (could effect Atom feeds)
 
 ### Changed Templates
 
